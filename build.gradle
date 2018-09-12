@@ -4,7 +4,7 @@ buildscript {
     ext {
         applicationModules = ['app']
         javaModules = []
-        androidModules = ['magicfilter']
+        androidModules = ['magicfilter', 'camera']
         def versionFile = rootProject.file('version.properties')
         if (versionFile.exists()) {
             def input = versionFile.newInputStream()

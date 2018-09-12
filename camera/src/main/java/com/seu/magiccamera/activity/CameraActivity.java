@@ -164,43 +164,43 @@ public class CameraActivity extends Activity{
 
         @Override
         public void onClick(View v) {
-            switch (v.getId()){
-                case R.id.btn_camera_mode:
-                    switchMode();
-                    break;
-                case R.id.btn_camera_shutter:
-                    if (PermissionChecker.checkSelfPermission(CameraActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                            == PackageManager.PERMISSION_DENIED) {
-                        ActivityCompat.requestPermissions(CameraActivity.this, new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE },
-                                v.getId());
-                    } else {
-                        if(mode == MODE_PIC)
-                            takePhoto();
-                        else
-                            takeVideo();
-                    }
-                    break;
-                case R.id.btn_camera_filter:
-                    showFilters();
-                    break;
-                case R.id.btn_camera_switch:
-                    magicEngine.switchCamera();
-                    break;
-                case R.id.btn_camera_beauty:
-                    new AlertDialog.Builder(CameraActivity.this)
-                            .setSingleChoiceItems(new String[] { "关闭", "1", "2", "3", "4", "5"}, MagicParams.beautyLevel,
+            int i = v.getId();
+            if (i == R.id.btn_camera_mode) {
+                switchMode();
+
+            } else if (i == R.id.btn_camera_shutter) {
+                if (PermissionChecker.checkSelfPermission(CameraActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        == PackageManager.PERMISSION_DENIED) {
+                    ActivityCompat.requestPermissions(CameraActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            v.getId());
+                } else {
+                    if (mode == MODE_PIC)
+                        takePhoto();
+                    else
+                        takeVideo();
+                }
+
+            } else if (i == R.id.btn_camera_filter) {
+                showFilters();
+
+            } else if (i == R.id.btn_camera_switch) {
+                magicEngine.switchCamera();
+
+            } else if (i == R.id.btn_camera_beauty) {
+                new AlertDialog.Builder(CameraActivity.this)
+                        .setSingleChoiceItems(new String[]{"关闭", "1", "2", "3", "4", "5"}, MagicParams.beautyLevel,
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         magicEngine.setBeautyLevel(which);
                                         dialog.dismiss();
                                     }
                                 })
-                            .setNegativeButton("取消", null)
-                            .show();
-                    break;
-                case R.id.btn_camera_closefilter:
-                    hideFilters();
-                    break;
+                        .setNegativeButton("取消", null)
+                        .show();
+
+            } else if (i == R.id.btn_camera_closefilter) {
+                hideFilters();
+
             }
         }
     };

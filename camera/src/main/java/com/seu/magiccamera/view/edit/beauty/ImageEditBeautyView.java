@@ -48,17 +48,15 @@ public class ImageEditBeautyView extends ImageEditFragment {
 			@Override
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				// TODO Auto-generated method stub
-				switch (checkedId) {
-				case R.id.fragment_beauty_btn_skinsmooth:
+				if (checkedId == R.id.fragment_beauty_btn_skinsmooth) {
 					mSkinSmoothView.setVisibility(View.VISIBLE);
 					mSkinColorView.setVisibility(View.GONE);
-					break;
-				case R.id.fragment_beauty_btn_skincolor:
+
+				} else if (checkedId == R.id.fragment_beauty_btn_skincolor) {
 					mSkinColorView.setVisibility(View.VISIBLE);
 					mSkinSmoothView.setVisibility(View.GONE);
-					break;
-				default:
-					break;
+
+				} else {
 				}
 			}
 		});

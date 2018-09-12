@@ -53,49 +53,47 @@ public class ImageEditAdjustView extends ImageEditFragment {
 				// TODO Auto-generated method stub
 				if(checkedId != -1)
 				mLinearLayout.setVisibility(View.VISIBLE);
-				switch (checkedId) {
-				case R.id.fragment_radio_contrast:
+				if (checkedId == R.id.fragment_radio_contrast) {
 					type = MagicFilterType.CONTRAST;
 					mSeekBar.reset();
 					mSeekBar.setSeekLength(-100, 100, -50, 1);
 					mSeekBar.setValue(contrast);
 					mLabel.setBackgroundResource(R.drawable.selector_image_edit_adjust_contrast);
-					break;
-				case R.id.fragment_radio_exposure:
-					type = MagicFilterType.EXPOSURE;		
+
+				} else if (checkedId == R.id.fragment_radio_exposure) {
+					type = MagicFilterType.EXPOSURE;
 					mSeekBar.reset();
 					mSeekBar.setSeekLength(-100, 100, 0, 1);
-					mSeekBar.setValue(exposure);		
+					mSeekBar.setValue(exposure);
 					mLabel.setBackgroundResource(R.drawable.selector_image_edit_adjust_exposure);
-					break;
-				case R.id.fragment_radio_saturation:
-					type = MagicFilterType.SATURATION;			
+
+				} else if (checkedId == R.id.fragment_radio_saturation) {
+					type = MagicFilterType.SATURATION;
 					mSeekBar.reset();
 					mSeekBar.setSeekLength(-100, 100, 0, 1);
-					mSeekBar.setValue(saturation);		
+					mSeekBar.setValue(saturation);
 					mLabel.setBackgroundResource(R.drawable.selector_image_edit_adjust_saturation);
-					break;
-				case R.id.fragment_radio_sharpness:
-					type = MagicFilterType.SHARPEN;			
+
+				} else if (checkedId == R.id.fragment_radio_sharpness) {
+					type = MagicFilterType.SHARPEN;
 					mSeekBar.reset();
 					mSeekBar.setSeekLength(-100, 100, 0, 1);
-					mSeekBar.setValue(sharpness);	
+					mSeekBar.setValue(sharpness);
 					mLabel.setBackgroundResource(R.drawable.selector_image_edit_adjust_saturation);
-					break;
-				case R.id.fragment_radio_bright:
-					type = MagicFilterType.BRIGHTNESS;			
+
+				} else if (checkedId == R.id.fragment_radio_bright) {
+					type = MagicFilterType.BRIGHTNESS;
 					mSeekBar.reset();
 					mSeekBar.setSeekLength(-100, 100, 0, 1);
-					mSeekBar.setValue(brightness);						
-					break;
-				case R.id.fragment_radio_hue:
-					type = MagicFilterType.HUE;		
+					mSeekBar.setValue(brightness);
+
+				} else if (checkedId == R.id.fragment_radio_hue) {
+					type = MagicFilterType.HUE;
 					mSeekBar.reset();
 					mSeekBar.setSeekLength(0, 360, 0, 1);
-					mSeekBar.setValue(hue);								
-					break;
-				default:
-					break;
+					mSeekBar.setValue(hue);
+
+				} else {
 				}
 			}
 		});
@@ -132,27 +130,27 @@ public class ImageEditAdjustView extends ImageEditFragment {
 	}
 	
 	private int convertToProgress(float value){
-		switch (mRadioGroup.getCheckedRadioButtonId()) {
-			case R.id.fragment_radio_contrast:
-				contrast = value;	
-				return (int) Math.round((value + 100) / 2);
-			case R.id.fragment_radio_exposure:
-				exposure = value;
-				return (int) Math.round((value + 100) / 2);
-			case R.id.fragment_radio_saturation:
-				saturation = value;
-				return (int) Math.round((value + 100) / 2);
-			case R.id.fragment_radio_sharpness:
-				sharpness = value;
-				return (int) Math.round((value + 100) / 2);
-			case R.id.fragment_radio_bright:
-				brightness = value;
-				return (int) Math.round((value + 100) / 2);
-			case R.id.fragment_radio_hue:
-				hue = value;
-				return (int) Math.round(100 * value / 360.0f);
-			default:
-				return 0;
+		int i = mRadioGroup.getCheckedRadioButtonId();
+		if (i == R.id.fragment_radio_contrast) {
+			contrast = value;
+			return (int) Math.round((value + 100) / 2);
+		} else if (i == R.id.fragment_radio_exposure) {
+			exposure = value;
+			return (int) Math.round((value + 100) / 2);
+		} else if (i == R.id.fragment_radio_saturation) {
+			saturation = value;
+			return (int) Math.round((value + 100) / 2);
+		} else if (i == R.id.fragment_radio_sharpness) {
+			sharpness = value;
+			return (int) Math.round((value + 100) / 2);
+		} else if (i == R.id.fragment_radio_bright) {
+			brightness = value;
+			return (int) Math.round((value + 100) / 2);
+		} else if (i == R.id.fragment_radio_hue) {
+			hue = value;
+			return (int) Math.round(100 * value / 360.0f);
+		} else {
+			return 0;
 		}
 	}
 	
