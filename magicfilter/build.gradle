@@ -15,13 +15,11 @@ android {
         }
     }
     externalNativeBuild {
-        ndkBuild {
-            path 'build/intermediates/ndk/debug/Android.mk'
+        cmake {
+            path "CMakeLists.txt"
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
 }
